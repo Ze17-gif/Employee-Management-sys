@@ -472,8 +472,14 @@ def root_screen():
 
     def do_delete():
             Connect()
-            c.execute("DELETE from tbl_employees WHERE id="+ E_id.get())
-            tk.messagebox.askyesno("Warning", "Confirm Delete?",)
+            Msg_box = tk.messagebox.askyesno("Warning", "Confirm Delete?",)
+
+            if Msg_box == TRUE:
+               c.execute("DELETE from tbl_employees WHERE id="+ E_id.get())
+               print ("Employee deleted")
+            else:
+            print("Employee not deleted")
+            return
             Commit_close()
             DisplayData()
 
